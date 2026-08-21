@@ -1,1 +1,378 @@
-<p>This is my Portfolio !</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aoshi Yadav — Product Analytics</title>
+<meta name="description" content="Aoshi Yadav — Credit risk analyst building toward product analytics. Case studies in progress.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #14161C;
+    --panel: #1B1E27;
+    --panel-border: #2C303C;
+    --ink: #F4F1E9;
+    --ink-muted: #A9A6A0;
+    --accent: #D4A24C;
+    --accent-dim: #8A6B33;
+    --hairline: #2E3240;
+    --radius: 3px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", -apple-system, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .wrap{ max-width: 960px; margin: 0 auto; padding: 0 28px; }
+
+  .eyebrow{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position: sticky; top:0; z-index: 10;
+    background: rgba(20,22,28,0.88);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content: space-between;
+    padding: 16px 28px;
+  }
+  .nav-name{
+    font-family:"IBM Plex Mono", monospace;
+    font-size: 14px; letter-spacing: 0.04em; color: var(--ink);
+  }
+  .nav-links{ display:flex; gap: 24px; font-family:"IBM Plex Mono", monospace; font-size: 13px; }
+  .nav-links a{ color: var(--ink-muted); }
+  .nav-links a:hover{ color: var(--accent); }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    padding: 100px 0 80px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 56px;
+    align-items:center;
+  }
+  h1{
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.04;
+    margin: 14px 0 20px;
+  }
+  .hero-line{
+    font-size: 18px;
+    color: var(--ink-muted);
+    max-width: 46ch;
+    margin-bottom: 32px;
+  }
+  .hero-line strong{ color: var(--ink); font-weight: 500; }
+
+  .cta-row{ display:flex; gap: 14px; flex-wrap: wrap; }
+  .btn{
+    font-family:"IBM Plex Mono", monospace;
+    font-size: 13px;
+    padding: 11px 18px;
+    border-radius: var(--radius);
+    border: 1px solid var(--hairline);
+    color: var(--ink);
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .btn:hover{ border-color: var(--accent); color: var(--accent); text-decoration:none; }
+  .btn.primary{ background: var(--accent); color: #14161C; border-color: var(--accent); font-weight: 500;}
+  .btn.primary:hover{ opacity: 0.88; color:#14161C; }
+
+  /* ---------- DIAL ---------- */
+  .dial-wrap{ display:flex; justify-content:center; }
+  .dial-caption{
+    font-family:"IBM Plex Mono", monospace;
+    font-size: 11px;
+    text-align:center;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    margin-top: 10px;
+  }
+  #needle{
+    transform-origin: 130px 130px;
+    animation: sweep 2.2s cubic-bezier(.22,1,.36,1) forwards;
+  }
+  @keyframes sweep{
+    from{ transform: rotate(-58deg); }
+    to{ transform: rotate(58deg); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    #needle{ animation: none; transform: rotate(58deg); }
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding: 72px 0; border-bottom: 1px solid var(--hairline); }
+  section:last-of-type{ border-bottom: none; }
+  h2{
+    font-family:"Fraunces", serif;
+    font-weight: 500;
+    font-size: 28px;
+    margin: 8px 0 28px;
+  }
+  .lede{ color: var(--ink-muted); max-width: 62ch; font-size: 16px; }
+
+  /* ---------- ABOUT ---------- */
+  .about-body p { max-width: 66ch; margin: 0 0 16px; }
+  .about-body p:last-child{ margin-bottom:0; }
+
+  /* ---------- INSTRUMENTS (skills) ---------- */
+  .instrument-list{ border-top: 1px solid var(--hairline); }
+  .instrument-row{
+    display:grid;
+    grid-template-columns: 200px 1fr;
+    gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .instrument-label{
+    font-family:"IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.03em;
+    padding-top: 2px;
+  }
+  .instrument-items{ color: var(--ink-muted); font-size: 15px; }
+  .instrument-items span{ color: var(--ink); }
+
+  /* ---------- CASE STUDIES ---------- */
+  .cs-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .cs-card{
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius);
+    padding: 24px;
+    display:flex; flex-direction:column; gap:10px;
+    min-height: 168px;
+  }
+  .cs-status{
+    font-family:"IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform:uppercase;
+    color: var(--accent-dim);
+  }
+  .cs-title{
+    font-family:"Fraunces", serif;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .cs-desc{ color: var(--ink-muted); font-size: 14.5px; flex-grow:1; }
+  .cs-tag{
+    font-family:"IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--hairline);
+    padding-top: 10px;
+    margin-top: 6px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding: 56px 0 72px; }
+  .footer-grid{
+    display:flex; justify-content: space-between; align-items:flex-end; flex-wrap: wrap; gap: 24px;
+  }
+  .footer-links{ display:flex; gap: 22px; font-family:"IBM Plex Mono", monospace; font-size: 13px; }
+  .footer-note{ color: var(--ink-muted); font-size: 13px; font-family:"IBM Plex Mono", monospace; }
+
+  @media (max-width: 760px){
+    .hero-grid{ grid-template-columns: 1fr; }
+    .dial-wrap{ order: -1; }
+    .cs-grid{ grid-template-columns: 1fr; }
+    .instrument-row{ grid-template-columns: 1fr; gap: 6px; }
+    nav .wrap{ flex-direction: column; align-items:flex-start; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-name">AOSHI YADAV</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#instruments">Skills</a>
+      <a href="#work">Case Studies</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Risk Analyst → Product Analyst</div>
+      <h1>Aoshi Yadav</h1>
+      <p class="hero-line">
+        <strong>7 years reading risk signals at HSBC and Wells Fargo.</strong>
+        Now recalibrating the same instruments — experimentation, causal inference, forecasting — toward product decisions.
+      </p>
+      <div class="cta-row">
+        <a class="btn primary" href="#work">View case studies</a>
+        <a class="btn" href="#" id="resume-link">Resume</a>
+        <a class="btn" href="https://github.com/aoshi-handle-here" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://linkedin.com/in/aoshi-handle-here" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="dial-wrap">
+        <svg width="260" height="160" viewBox="0 0 260 160" aria-label="Calibration dial animating from Risk to Product">
+          <path d="M 20 130 A 110 110 0 0 1 240 130" fill="none" stroke="#2E3240" stroke-width="10" stroke-linecap="round"/>
+          <path d="M 20 130 A 110 110 0 0 1 130 20" fill="none" stroke="#3A3F4B" stroke-width="10" stroke-linecap="round"/>
+          <path d="M 130 20 A 110 110 0 0 1 240 130" fill="none" stroke="#4A3822" stroke-width="10" stroke-linecap="round"/>
+          <text x="18" y="150" fill="#A9A6A0" font-family="IBM Plex Mono, monospace" font-size="11">RISK</text>
+          <text x="205" y="150" fill="#D4A24C" font-family="IBM Plex Mono, monospace" font-size="11">PRODUCT</text>
+          <g id="needle">
+            <line x1="130" y1="130" x2="130" y2="34" stroke="#F4F1E9" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="130" cy="130" r="6" fill="#D4A24C"/>
+          </g>
+        </svg>
+      </div>
+      <div class="dial-caption">CALIBRATION IN PROGRESS — SEE CASE STUDIES</div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">About</div>
+    <h2>From roll-rates to retention curves</h2>
+    <div class="about-body">
+      <p>
+        At HSBC and Wells Fargo, Aoshi spent seven years building the instruments banks use to decide who gets credit and how much: risk-tier models, swap-set experiments, forecasting platforms that stitch years of behavioral data into a single trustworthy number. The math underneath — hypothesis testing, causal inference, time-series forecasting — is the same math product teams use to decide what to build next.
+      </p>
+      <p>
+        This site tracks that recalibration in the open: real projects, run on public product data, using the same rigor she's applied to credit portfolios for years. Nothing here is a finished museum piece — it's a working log of a transition in progress.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="instruments">
+  <div class="wrap">
+    <div class="eyebrow">Instrument Panel</div>
+    <h2>What she's calibrating</h2>
+    <p class="lede">Grouped by the systems she's applying them to, not just listed as tags.</p>
+
+    <div class="instrument-list">
+      <div class="instrument-row">
+        <div class="instrument-label">MODELING</div>
+        <div class="instrument-items"><span>XGBoost, LightGBM, Scikit-learn</span> — hyperparameter tuning, SHAP, cross-validation, benchmarked against simpler baselines.</div>
+      </div>
+      <div class="instrument-row">
+        <div class="instrument-label">EXPERIMENTATION</div>
+        <div class="instrument-items"><span>A/B testing, hypothesis testing, causal inference, survival analysis</span> — the direct product-side extension of swap-set analysis at HSBC.</div>
+      </div>
+      <div class="instrument-row">
+        <div class="instrument-label">FORECASTING</div>
+        <div class="instrument-items"><span>ARIMA, Prophet, Bayesian methods</span> — extending the SMART platform's curve-stitching approach to product time series.</div>
+      </div>
+      <div class="instrument-row">
+        <div class="instrument-label">SHIPPING</div>
+        <div class="instrument-items"><span>MLflow, FastAPI, Docker, CI/CD, drift monitoring (PSI/KS)</span> — taking a model from notebook to served, monitored endpoint.</div>
+      </div>
+      <div class="instrument-row">
+        <div class="instrument-label">AI WORKFLOWS</div>
+        <div class="instrument-items"><span>LLM APIs, prompt engineering, RAG, embeddings</span> — applied to summarizing and retrieving her own analysis.</div>
+      </div>
+      <div class="instrument-row">
+        <div class="instrument-label">FOUNDATION</div>
+        <div class="instrument-items"><span>Advanced SQL, BigQuery, Python, Tableau/Looker</span> — 7 years production experience, not aspirational.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="eyebrow">Case Studies</div>
+    <h2>The transition, documented</h2>
+    <p class="lede">Each case study pairs a real technique with a product question. Status is honest — this panel updates as each one ships.</p>
+
+    <div class="cs-grid">
+      <div class="cs-card">
+        <div class="cs-status">In progress</div>
+        <div class="cs-title">From Credit Risk to Product Risk</div>
+        <div class="cs-desc">Reframing the SMART forecasting platform — curve-stitching and scenario modeling — as a product forecasting engine.</div>
+        <div class="cs-tag">Time-series · ARIMA · Prophet</div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-status">In progress</div>
+        <div class="cs-title">Experimentation at Scale</div>
+        <div class="cs-desc">Swap-set analysis, reframed as an A/B test: hypothesis, guardrail metrics, and a recommendation memo.</div>
+        <div class="cs-tag">A/B testing · Causal inference</div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-status">Not started</div>
+        <div class="cs-title">Segmentation for Growth</div>
+        <div class="cs-desc">PCA and clustering, redirected from account risk tiers to user growth segments.</div>
+        <div class="cs-tag">Clustering · PCA</div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-status">Not started</div>
+        <div class="cs-title">Predicting the First Purchase</div>
+        <div class="cs-desc">A from-scratch product dataset: who converts, who churns, and what the model would tell a PM to do about it.</div>
+        <div class="cs-tag">XGBoost · SHAP · Survival analysis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap footer-grid">
+    <div>
+      <div class="eyebrow">Contact</div>
+      <h2 style="margin-bottom:6px;">Let's talk</h2>
+      <p class="lede" style="margin:0;">aoshiyadav@gmail.com</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://github.com/aoshi-handle-here" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/aoshi-handle-here" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:aoshiyadav@gmail.com">Email</a>
+    </div>
+  </div>
+  <div class="wrap footer-note" style="margin-top:36px;">Site built and versioned in the open · last updated manually per session</div>
+</footer>
+
+</body>
+</html>
